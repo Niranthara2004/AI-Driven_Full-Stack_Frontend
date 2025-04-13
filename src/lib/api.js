@@ -1,11 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://aidf-horizone-backend-niranthara.onrender.com/api/",
+    baseUrl: "https://ai-drivenfull-stackbackend-production.up.railway.app/api/",
     prepareHeaders: async (headers, { getState }) => {
       return new Promise((resolve) => {
         async function checkToken() {
