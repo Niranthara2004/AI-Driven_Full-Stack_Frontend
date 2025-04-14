@@ -28,10 +28,14 @@ export default function HotelPage() {
   const handleBook = async (bookingData) => {
     try {
       const booking = await createBooking(bookingData).unwrap();
+      console.log("Booking response:", booking);
+      if (!booking || !booking._id) {
+        throw new Error("Booking creation failed or booking ID is missing");
+      }
       navigate(`/booking/payment?bookingId=${booking._id}`);
       toast.success("Booking successful");
     } catch (error) {
-      console.log(error);
+      console.error("Error during booking:", error);
       toast.error("Booking failed");
     }
   };
